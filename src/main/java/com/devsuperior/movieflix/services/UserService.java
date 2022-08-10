@@ -46,7 +46,8 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional(readOnly = true)
-    public User loadByUserLogged(){
-        return authService.authenticated();
+    public UserDTO getUserAuth() {
+        User user = authService.authenticated();
+        return new UserDTO(user);
     }
 }
